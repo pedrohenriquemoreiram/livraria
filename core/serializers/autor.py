@@ -4,4 +4,4 @@ from core.models import Autor
 class AutorSerializer(ModelSerializer):
     class Meta:
         model = Autor
-        field = "__all__"
+        fields = "__all__"
