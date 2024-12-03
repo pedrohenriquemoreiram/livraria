@@ -32,3 +32,4 @@ class ItensCompra(models.Model):
         #     total += item.livro.preco * item.quantidade
         # return total
         return sum(item.livro.preco * item.quantidade for item in self.itens.all())
+    
