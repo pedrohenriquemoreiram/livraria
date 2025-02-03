@@ -42,14 +42,14 @@ platformdirs==4.3.6
 pre-commit==4.0.1
 psycopg2-binary==2.9.10
 pycparser==2.22; platform_python_implementation != "PyPy"
-pydantic==2.10.1
-pydantic-core==2.27.1
+pydantic==2.10.0
+pydantic-core==2.27.0
 pydotplus==2.0.2
 pyjwt==2.10.0
 pyparsing==3.2.0
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
-python-magic==0.4.27
+python-magic==0.4.27; sys_platform == "linux"
 python-magic-bin==0.4.14; sys_platform == "win32, darwin"
 pyyaml==6.0.2
 referencing==0.35.1

@@ -3,13 +3,16 @@ Django admin customization.
 """
 
 from django.contrib import admin
+from core.models import Autor, Categoria, Editora, Livro, User
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
 from core import models
 from core.models import Compra
+from core.models import ItensCompra
 
-from core.models import Autor, Categoria, Editora, Livro,  User
+
+
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
     """Define the admin pages for users."""
@@ -52,19 +55,6 @@ class UserAdmin(BaseUserAdmin):
         ),
     )
 
-class ItensCompraInline(admin.TabularInline):
-    model = models.ItensCompra
-    extra = 1 # Quantidade de itens adicionais
-
-
-@admin.register(Compra)
-class CompraAdmin(admin.ModelAdmin):
-    list_display = ("usuario", "status")
-    search_fields = ("usuario", "status")
-    list_filter = ("usuario", "status")
-    ordering = ("usuario", "status")
-    list_per_page = 25
-    inlines = [ItensCompraInline]
 
 
 @admin.register(Autor)
@@ -85,17 +75,31 @@ class CategoriaAdmin(admin.ModelAdmin):
 
 @admin.register(Editora)
 class EditoraAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'site', 'cidade')
-    search_fields = ('nome', 'site', 'cidade')
-    list_filter = ('nome', 'site', 'cidade')
-    ordering = ('nome', 'site', 'cidade')
-    list_per_page = 10 
+    list_display = ('nome', 'email', 'cidade')
+    search_fields = ('nome', 'email', 'cidade')
+    list_filter = ('nome', 'email', 'cidade')
+    ordering = ('nome', 'email', 'cidade')
+    list_per_page = 10
 
 @admin.register(Livro)
 class LivroAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'editora', 'categoria')
-    search_fields = ('titulo', 'editora__nome', 'categoria__nome')
+    search_fields = ('titulo', 'editora__nome', 'categoria__descricao')
     list_filter = ('editora', 'categoria')
     ordering = ('titulo', 'editora', 'categoria')
     list_per_page = 25
+
+class ItensCompraInline(admin.TabularInline):
+    model = ItensCompra
+    extra = 1 # Quantidade de itens adicionais
+
+
+@admin.register(Compra)
+class CompraAdmin(admin.ModelAdmin):
+    list_display = ("usuario", "status")
+    search_fields = ("usuario", "status")
+    list_filter = ("usuario", "status")
+    ordering = ("usuario", "status")
+    list_per_page = 25
+    inlines = [ItensCompraInline]
 
