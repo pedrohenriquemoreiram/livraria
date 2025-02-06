@@ -10,6 +10,7 @@ from django.utils.translation import gettext_lazy as _
 from core import models
 from core.models import Compra
 from core.models import ItensCompra
+from core.models import Favorito
 
 
 
@@ -102,4 +103,11 @@ class CompraAdmin(admin.ModelAdmin):
     ordering = ("usuario", "status")
     list_per_page = 25
     inlines = [ItensCompraInline]
-
+    
+@admin.register(Favorito)
+class FavoritoAdmin(admin.ModelAdmin):
+    list_display = ("user", "livro")
+    search_fields = ("user", "livro")
+    list_filter = ("user", "livro")
+    ordering = ("user", "livro")
+    list_per_page = 25

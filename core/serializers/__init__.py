@@ -12,3 +12,13 @@ from .compra import (
     ItensCompraListSerializer, # novo
     ItensCompraSerializer,
 )
+
+from .favorito import FavoritoSerializer
+
+from .livro import (
+    LivroAjustarEstoqueSerializer, # novo
+    LivroAlterarPrecoSerializer,
+    LivroListSerializer,
+    LivroRetrieveSerializer,
+    LivroSerializer,
+)

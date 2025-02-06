@@ -15,6 +15,7 @@ from core.views import (
     EditoraViewSet,
     LivroViewSet,
     UserViewSet,
+    FavoritoViewSet
 )
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
@@ -29,6 +30,7 @@ router.register(r"editoras", EditoraViewSet)
 router.register(r"autores", AutorViewSet)
 router.register(r"livros", LivroViewSet)
 router.register(r"compras", CompraViewSet)
+router.register(r"favoritos", FavoritoViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
