@@ -83,6 +83,16 @@ class LivroViewSet(ModelViewSet):
         ]
 
         return Response(data, status=status.HTTP_200_OK)
-    
-    
+
+    @action(detail=False, methods=["get"])
+    def livro_favorito(self, request):
+        favorito = Favorito.objects.filter(livro=1)
+        data = [
+            {
+               "id": livro.id,
+                "titulo": livro.titulo 
+          }
+           for livro in favorito
+      ]
+        return Response(data, status=status.HTTP_200_OK)
 

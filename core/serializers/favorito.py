@@ -6,3 +6,11 @@ class FavoritoSerializer(ModelSerializer):
     class Meta:
         model = Favorito
         fields = "__all__"
+        
+        
+
+class FavoritoRetriveSerializer(ModelSerializer):
+    class Meta:
+        model = Favorito
+        fields = "__all__"
+        depth = 1

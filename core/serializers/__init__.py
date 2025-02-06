@@ -13,7 +13,7 @@ from .compra import (
     ItensCompraSerializer,
 )
 
-from .favorito import FavoritoSerializer
+from .favorito import FavoritoSerializer, FavoritoRetriveSerializer
 
 from .livro import (
     LivroAjustarEstoqueSerializer, # novo
